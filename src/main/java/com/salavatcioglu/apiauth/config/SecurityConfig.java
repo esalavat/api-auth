@@ -50,7 +50,7 @@ public class SecurityConfig {
     public RegisteredClientRepository registeredClientRepository() {
         RegisteredClient client = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("messages-client")
-                .clientSecret("$2a$12$UAF/DHmoQoxBoPVuCadMP.58KceUN9QmhYIQPulJTCYlICwIA9Uw6")
+                .clientSecret("$2y$10$aI7S75cYnWY.ZSYCHqtbn.4cOG97tLE7sbaTseOB0ZJ259cpooC0y")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
@@ -67,6 +67,7 @@ public class SecurityConfig {
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {
         return AuthorizationServerSettings.builder()
+                .issuer("http://api-auth:8082")
                 .build();
     }
 }
